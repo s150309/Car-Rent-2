@@ -2,7 +2,8 @@
 
 @section('content')
 
-    <h1>Samochody <a href="{{ url('cars/create') }}" class="btn btn-primary pull-right btn-sm">Dodaj nowy samochód</a></h1>
+
+
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -18,16 +19,9 @@
                     <td>{{ $x }}</td>
                     <td><a href="{{ url('cars', $item->id) }}">{{ $item->nazwa }}</a></td><td>{{ $item->segment }}</td><td>{{ $item->cena_dzien }} zł.</td>
                     <td>
-                        <a href="{{ url('cars/' . $item->id . '/edit') }}">
-                            <button type="submit" class="btn btn-primary btn-xs">Uaktualnij</button>
+                        <a href="{{ url('reservations/create/' . $item->id . '') }}">
+                            <button type="submit" class="btn btn-success btn-xs">Zarezerwuj</button>
                         </a> 
-                        {!! Form::open([
-                            'method'=>'DELETE',
-                            'url' => ['cars', $item->id],
-                            'style' => 'display:inline'
-                        ]) !!}
-                            {!! Form::submit('Usuń', ['class' => 'btn btn-danger btn-xs']) !!}
-                        {!! Form::close() !!}
                     </td>
                 </tr>
             @endforeach
@@ -35,5 +29,9 @@
         </table>
         <div class="pagination"> {!! $cars->render() !!} </div>
     </div>
+
+
+
+
 
 @endsection
